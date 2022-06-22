@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  notebook:
+    container_name: jupyter_python
+    platform: linux/amd64  # for build on m1 mac
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/opt/notebook/
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      NOTEBOOK_TOKEN: "${NOTEBOOK_TOKEN}"
